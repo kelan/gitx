@@ -182,10 +182,10 @@ var loadCommit = function(commitObject, currentRef) {
 	$("commitID").innerHTML = commit.sha;
 	$("authorID").innerHTML = commit.author_name;
 	$("subjectID").innerHTML = commit.subject.escapeHTML();
-	$("diff").innerHTML = ""
-	$("message").innerHTML = ""
-	$("files").innerHTML = ""
-	$("date").innerHTML = ""
+	$("diff").innerHTML = "";
+	$("message").innerHTML = "";
+	$("files").innerHTML = "";
+	$("date").innerHTML = "";
 	showRefs();
 
 	for (var i = 0; i < $("commit_header").rows.length; ++i) {
