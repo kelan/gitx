@@ -219,6 +219,21 @@
 
 #pragma mark Diff
 
+- (void)viewDiffInNewWindow:(PBRefMenuItem *)sender
+{
+	PBGitCommit *commit = nil;
+	if ([[sender refish] refishType] == kGitXCommitType)
+		commit = (PBGitCommit *)[sender refish];
+	else
+		commit = [historyController.repository commitForRef:[sender refish]];
+
+    NSArray *parents = commit.parents;
+    if ([parents count] > 0) {
+        PBGitCommit *parent = [historyController.repository commitForSHA:parents[0]];
+        [PBDiffWindowController showDiffWindowWithFiles:nil fromCommit:commit diffCommit:parent];
+    }
+}
+
 - (void) diffWithHEAD:(PBRefMenuItem *)sender
 {
 	PBGitCommit *commit = nil;
